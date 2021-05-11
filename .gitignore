@@ -30,7 +30,7 @@ hs_err_pid*
 ####################
 
 .gradle
-/build/
+game-stock-core/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
