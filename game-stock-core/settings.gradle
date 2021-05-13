@@ -1,2 +1,3 @@
 rootProject.name = 'game-stock-core'
 
+include 'game-stock-api'

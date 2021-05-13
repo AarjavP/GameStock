@@ -18,6 +18,7 @@ dependencies {
 
 
     api 'org.litote.kmongo:kmongo-coroutine:4.2.7'
+    api 'org.litote.kmongo:kmongo-id-serialization:4.2.7'
 
     def log4j2Version = '2.14.1'
     api group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4j2Version
