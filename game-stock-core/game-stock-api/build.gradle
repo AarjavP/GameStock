@@ -1,0 +1,42 @@
+plugins {
+    id 'application'
+    id 'org.jetbrains.kotlin.jvm'
+    id 'dev.zacsweers.kgp-150-leak-patcher'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+group rootProject.group
+version rootProject.version
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'org.jetbrains.kotlin:kotlin-stdlib'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
+
+    api parent
+
+    api group: 'com.github.ajalt.clikt', name: 'clikt', version: '3.1.0'
+
+    def ktorVersion = '1.5.4'
+    api group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
+    api group: 'io.ktor', name: 'ktor-server-netty', version: ktorVersion
+    api group: 'io.ktor', name: 'ktor-locations', version: ktorVersion
+    api group: 'io.ktor', name: 'ktor-serialization', version: ktorVersion
+
+
+    def log4j2Version = '2.14.1'
+    api group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4j2Version
+    api group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4j2Version
+
+    def junitVersion = '5.7.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testImplementation group: 'io.kotest', name: 'kotest-assertions-core-jvm', version: '4.5.0'
+}
+
+test {
+    useJUnitPlatform()
+}

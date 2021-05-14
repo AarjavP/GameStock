@@ -3,10 +3,12 @@ package net.cabii.game.models
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import org.litote.kmongo.Id
+import org.litote.kmongo.newId
 
 @Serializable
 data class Game(
-    val id: Id<Game>,
+    @Contextual
+    val _id: Id<Game> = newId(),
     val name: String,
     val description: String,
     val tags: Set<String>,

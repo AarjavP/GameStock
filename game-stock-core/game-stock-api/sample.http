@@ -1,0 +1,43 @@
+GET http://localhost:8080/games
+
+
+###
+
+POST http://localhost:8080/games
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Mafia3",
+  "description": "Kill or be killed",
+  "tags": [ "Mystery" ],
+  "category": "Indoor",
+  "suggestedNumberOfPlayers": {
+    "minPlayers": 4
+  },
+  "maturityRating": "TEEN",
+  "ageGroup": {
+    "minAge": 14
+  },
+  "userRating": 20.0,
+  "complexityRating": 2.0,
+  "buyLinks": [
+    ""
+  ],
+  "similarGames": [],
+  "media": [
+    {
+      "url": "https://cdn.discordapp.com/attachments/838276842074931230/840680282029555713/unknown.png",
+      "type": "image/png"
+    }
+  ],
+  "howToPlay": "vote",
+  "materialsNeeded": [
+    "cards"
+  ]
+}
+
+###
+
+GET http://localhost:8080/games/609c8a4140ac5200374d06fb
+
