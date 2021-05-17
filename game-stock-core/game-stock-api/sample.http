@@ -8,7 +8,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "name": "Mafia3",
+  "name": "Mafia4",
   "description": "Kill or be killed",
   "tags": [ "Mystery" ],
   "category": "Indoor",
