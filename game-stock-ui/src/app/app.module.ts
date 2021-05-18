@@ -4,25 +4,30 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GameService} from './game.service';
-import {GameListComponent} from './game-list/game-list.component';
-import {GameDetailComponent} from './game-detail/game-detail.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { GameSearchComponent } from './game-search/game-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GameInputFormComponent } from './game-input-form/game-input-form.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        GameListComponent,
-        GameDetailComponent
+        SideNavComponent,
+        GameSearchComponent,
+        GameInputFormComponent,
     ],
     imports: [
         HttpClientModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule
 
     ],
     providers: [GameService],

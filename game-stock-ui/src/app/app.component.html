@@ -1,114 +1,27 @@
-<mat-toolbar color="primary" class="navbar">
-  <div>Game Stock</div>
-  <div>
-    <span>Home</span>
-    <span>About</span>
+<mat-toolbar class="toolbar" color="primary">
+  <div class="container">
+    <button mat-icon-button (click)="menuButtonOpened = !menuButtonOpened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <span>Game Stock</span>
+  </div>
+
+  <app-game-search></app-game-search>
+
+  <div class="container">
+    <button mat-icon-button>
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>share</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
-<form class="game-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Name</mat-label>
-    <input matInput required />
-  </mat-form-field>
 
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Description</mat-label>
-    <textarea matInput required></textarea>
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Tags</mat-label>
-    <mat-select multiple>
-      <mat-option>Mystery</mat-option>
-      <mat-option>Confusing</mat-option>
-      <mat-option>Outdoor</mat-option>
-      <mat-option>Indoor</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Category</mat-label>
-    <mat-select required>
-      <mat-option>Mystery</mat-option>
-      <mat-option>Confusing</mat-option>
-      <mat-option>Outdoor</mat-option>
-      <mat-option>Indoor</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <label id="example-radio-group-label">Maturity Rating</label>
-  <mat-radio-group class="example-radio-group">
-    <mat-radio-button value="EARLY_CHILDHOOD" class="example-radio-button"
-      >Early Childhood</mat-radio-button
-    >
-    <mat-radio-button value="EVERYONE" class="example-radio-button"
-      >Everyone 10+</mat-radio-button
-    >
-    <mat-radio-button value="TEEN" class="example-radio-button"
-      >Teen</mat-radio-button
-    >
-    <mat-radio-button value="MATURE" class="example-radio-button"
-      >Mature</mat-radio-button
-    >
-    <mat-radio-button value="RATING_PENDING" class="example-radio-button"
-      >Rating Pending</mat-radio-button
-    >
-    <mat-radio-button value="ADULT_ONLY" class="example-radio-button"
-      >Adults Only</mat-radio-button
-    >
-  </mat-radio-group>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Min Age</mat-label>
-    <input matInput type="number" required />
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Complexity Rating</mat-label>
-    <input matInput type="number" required />
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>How to Play</mat-label>
-    <textarea matInput required></textarea>
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Material Needed</mat-label>
-    <mat-select multiple>
-      <mat-option>Paper</mat-option>
-      <mat-option>Pen</mat-option>
-      <mat-option>Mind</mat-option>
-      <mat-option>Notebook</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-divider></mat-divider>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Similar Games</mat-label>
-    <mat-select multiple>
-      <mat-option>Mafia1</mat-option>
-      <mat-option>Mafia2</mat-option>
-      <mat-option>Mafia3</mat-option>
-      <mat-option>Mafia4</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-</form>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="menuButtonOpened"></mat-sidenav>
+  <mat-sidenav-content>
+    <app-game-input-form></app-game-input-form>
+  </mat-sidenav-content>
+</mat-sidenav-container>

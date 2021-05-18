@@ -1,0 +1,13 @@
+div {
+    background-color: accent;
+}
+
+.container {
+    display: flex; /* or inline-flex */
+    align-items: center;
+  
+  }
+
+.search-input {
+    width: 400px;
+}

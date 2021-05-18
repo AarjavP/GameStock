@@ -1,0 +1,17 @@
+<div class = "container">
+    <mat-form-field class="categories" floatLabel="never">
+      <mat-label>Categories</mat-label>
+      <mat-select [(value)] = "selectedCategory">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="indoor">Indoor</mat-option>
+        <mat-option value="outdoor">Outdoor</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class = 'search-input' floatLabel="never">
+      <mat-label>Search</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
