@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from '../game.service';
 import { AgeGroup, Game, MaturityRating, PlayerCount } from '../model/game';
 
 @Component({
@@ -9,12 +10,19 @@ import { AgeGroup, Game, MaturityRating, PlayerCount } from '../model/game';
 export class GameInputFormComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
   }
 
-  gameModel:Game = new Game('hello','','',[],'',new PlayerCount(0,0), MaturityRating.EVERYONE, new AgeGroup(0,0), 0, 0, [], [], [],'',[]);
-  
+  gameModel: Game = new Game('', '', '', [], '', new PlayerCount(0,), MaturityRating.EVERYONE, new AgeGroup(0,), 0, 0, [], [], [], '', []);
+
+
+  createGame() {
+    this.gameService.createGame(this.gameModel).subscribe()
+  }
+
+
+
 
 }

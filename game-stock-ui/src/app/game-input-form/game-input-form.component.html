@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Name" name = "name" [(ngModel)] = "gameModel.name"/>
+            <input matInput placeholder="Name" name="name" [(ngModel)]="gameModel.name" />
           </mat-form-field>
         </div>
       </div>
@@ -17,7 +17,8 @@
       <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="Description"></textarea>
+            <textarea matInput placeholder="Description" name="description"
+              [(ngModel)]="gameModel.description"></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -25,7 +26,7 @@
       <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
-            <textarea matInput placeholder="How To Play"></textarea>
+            <textarea matInput placeholder="How To Play" name="howToPlay" [(ngModel)]="gameModel.howToPlay"></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -34,7 +35,7 @@
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>Category</mat-label>
-            <mat-select>
+            <mat-select name="category" [(ngModel)]="gameModel.category">
               <mat-option value="indoor">Indoor</mat-option>
               <mat-option value="outdoor">Outdoor</mat-option>
             </mat-select>
@@ -46,7 +47,7 @@
         <div class="col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>Tags</mat-label>
-            <mat-select multiple>
+            <mat-select multiple name="tags" [(ngModel)]="gameModel.tags">
               <mat-option value="mystery">Mystery</mat-option>
               <mat-option value="horror">Horror</mat-option>
             </mat-select>
@@ -55,35 +56,35 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-            <mat-form-field >
-              <input matInput type="number" placeholder="Min Players" />
-            </mat-form-field>
-            <span></span>
-            <mat-form-field >
-                <input matInput type="number" placeholder="Max Players" />
-              </mat-form-field>
-              <span></span>
-              <mat-form-field >
-                <input matInput type="number" placeholder="Complexity Rating" />
-              </mat-form-field>
-          </div>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Min Players" name="minPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.minPlayers" />
+          </mat-form-field>
+          <span></span>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Max Players" name="maxPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.maxPlayers"/>
+          </mat-form-field>
+          <span></span>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Complexity Rating" name="complexityRating" [(ngModel)]="gameModel.complexityRating"/>
+          </mat-form-field>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <mat-radio-group class="margin-left">
-            <mat-radio-button value="early_childhood">Early Childhood</mat-radio-button>
-            <mat-radio-button value="everyone">Everyone</mat-radio-button>
-            <mat-radio-button value="everyone_10">Everyone 10+</mat-radio-button>
-            <mat-radio-button value="teen">Teen</mat-radio-button>
-            <mat-radio-button value="mature">Mature</mat-radio-button>
-            <mat-radio-button value="rating_pending">Rating Pending</mat-radio-button>
-            <mat-radio-button value="adult_only">Adults Only</mat-radio-button>
-        </mat-radio-group>
+          <mat-radio-group class="margin-left" name="maturityRating" [(ngModel)]="gameModel.maturityRating">
+            <mat-radio-button value="EARLY_CHILDHOOD">Early Childhood</mat-radio-button>
+            <mat-radio-button value="EVERYONE">Everyone</mat-radio-button>
+            <mat-radio-button value="EVERYONE_10">Everyone 10+</mat-radio-button>
+            <mat-radio-button value="TEEN">Teen</mat-radio-button>
+            <mat-radio-button value="MATURE">Mature</mat-radio-button>
+            <mat-radio-button value="RATING_PENDING">Rating Pending</mat-radio-button>
+            <mat-radio-button value="ADULT_ONLY">Adults Only</mat-radio-button>
+          </mat-radio-group>
         </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="primary" (click) = "createGame()">Save</button>
     </mat-card-actions>
   </mat-card>
 </form>

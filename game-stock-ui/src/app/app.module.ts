@@ -26,8 +26,8 @@ import { GameInputFormComponent } from './game-input-form/game-input-form.compon
         FormsModule,
         ReactiveFormsModule,        
         AppRoutingModule,
-        BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        BrowserAnimationsModule
 
     ],
     providers: [GameService],
