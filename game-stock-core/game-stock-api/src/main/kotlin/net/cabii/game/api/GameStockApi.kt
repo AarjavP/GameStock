@@ -9,6 +9,7 @@ import com.github.ajalt.clikt.parameters.types.int
 import com.mongodb.ConnectionString
 import io.ktor.application.*
 import io.ktor.features.*
+import io.ktor.http.*
 import io.ktor.locations.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -50,6 +51,7 @@ class GameStockApi: CliktCommand() {
                 json(json = Json { serializersModule = IdKotlinXSerializationModule })
             }
             install(CORS) {
+                header(HttpHeaders.ContentType)
                 anyHost()
             }
             install(DataConversion) {
