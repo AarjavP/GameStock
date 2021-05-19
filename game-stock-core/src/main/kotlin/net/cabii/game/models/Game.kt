@@ -1,14 +1,10 @@
 package net.cabii.game.models
 
-import kotlinx.serialization.Contextual
-import kotlinx.serialization.Serializable
 import org.litote.kmongo.Id
 import org.litote.kmongo.newId
 
-@Serializable
 data class Game(
-    @Contextual
-    val _id: Id<Game> = newId(),
+    val id: Id<Game> = newId(),
     val name: String,
     val description: String,
     val tags: Set<String>,
@@ -19,21 +15,18 @@ data class Game(
     val userRating: Double,
     val complexityRating: Double,
     val buyLinks: List<String>,
-    val similarGames: Set<@Contextual Id<Game>>,
+    val similarGames: Set<Id<Game>>,
     val media: List<GameMedia>,
     val howToPlay: String,
     val materialsNeeded: Set<String>,
 )
 
-@Serializable
 data class GameMedia(
     val url: String,
     val type: String,
 )
 
-@Serializable
 data class AgeGroup(val minAge: Int, val maxAge: Int? = null)
-@Serializable
 data class PlayerCount(val minPlayers: Int, val maxPlayers: Int? = null)
 enum class MaturityRating(val displayName: String) {
     EARLY_CHILDHOOD("Early Childhood"),
