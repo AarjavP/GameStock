@@ -15,7 +15,7 @@ export class GameInputFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  gameModel: Game = new Game( '', '', [], '', new PlayerCount(0,), MaturityRating.EVERYONE, new AgeGroup(0,), 0, 0, [], [], [], '', []);
+  gameModel: Game = new Game( '', '', [], '', new PlayerCount(undefined, undefined), MaturityRating.EVERYONE, new AgeGroup(0,), 0, [], [], [], '', []);
 
 
   createGame() {

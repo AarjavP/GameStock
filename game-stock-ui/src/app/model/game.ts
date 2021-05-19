@@ -8,18 +8,18 @@ export class Game {
     public maturityRating: MaturityRating,
     public ageGroup: AgeGroup,
     public userRating: number,
-    public complexityRating: number,
     public buyLinks: string[],
     public similarGames: string[],
     public media: GameMedia[],
     public howToPlay: string,
     public materialsNeeded: string[],
+    public complexityRating?: number,
     public _id?: string
   ) {}
 }
 
 export class PlayerCount {
-  constructor(public minPlayers: number, public maxPlayers?: number) {}
+  constructor(public minPlayers?: number, public maxPlayers?: number) {}
 }
 
 export enum MaturityRating {
@@ -33,7 +33,7 @@ export enum MaturityRating {
 }
 
 export class AgeGroup {
-  constructor(public minAge: number, public maxAge?: number) {}
+  constructor(public minAge?: number, public maxAge?: number) {}
 }
 
 export class GameMedia {
