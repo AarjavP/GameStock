@@ -23,11 +23,11 @@ import { GameInputFormComponent } from './game-input-form/game-input-form.compon
     imports: [
         HttpClientModule,
         BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,        
         AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule
+        MaterialModule
 
     ],
     providers: [GameService],

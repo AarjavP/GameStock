@@ -1,4 +1,6 @@
-<form class="form-container">
+<form #userForm="ngForm" class="form-container">
+  {{userForm.value | json}}
+  {{gameModel | json}}
   <mat-card>
     <mat-card-header>
       <mat-card-title>Game Information</mat-card-title>
@@ -7,7 +9,7 @@
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Name" />
+            <input matInput placeholder="Name" name = "name" [(ngModel)] = "gameModel.name"/>
           </mat-form-field>
         </div>
       </div>
