@@ -1,7 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.0'
     id 'dev.zacsweers.kgp-150-leak-patcher' version '1.1.0'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.0'
+//    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.0'
 }
 
 group 'net.cabii.game'
@@ -17,8 +17,13 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
 
-    api 'org.litote.kmongo:kmongo-coroutine:4.2.7'
-    api 'org.litote.kmongo:kmongo-id-serialization:4.2.7'
+    def kmongoVersion = '4.2.7'
+    api group: 'org.litote.kmongo', name: 'kmongo-coroutine', version: kmongoVersion, {
+        exclude module: 'kmongo-jackson-mapping'
+    }
+//    api 'org.litote.kmongo:kmongo-id-serialization:4.2.7'
+//    api group: 'org.litote.kmongo', name: 'kmongo-jackson', version: kmongoVersion
+    api group: 'org.litote.kmongo', name: 'kmongo-id-jackson', version: kmongoVersion
 
     def log4j2Version = '2.14.1'
     api group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4j2Version
