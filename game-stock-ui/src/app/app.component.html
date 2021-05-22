@@ -10,18 +10,20 @@
   <app-game-search></app-game-search>
 
   <div class="container">
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
+    <button mat-icon-button routerLink="/game-input-form">
+      <mat-icon>manage_accounts</mat-icon>
     </button>
-    <button mat-icon-button>
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button routerLink = "/games">
+      <mat-icon>home</mat-icon>
     </button>
   </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav mode="side" [(opened)]="menuButtonOpened"></mat-sidenav>
+  <mat-sidenav mode="side" [(opened)]="menuButtonOpened">
+    <app-side-nav></app-side-nav>
+  </mat-sidenav>
   <mat-sidenav-content>
-    <app-game-input-form></app-game-input-form>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

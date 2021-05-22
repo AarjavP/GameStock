@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule, routingComponents} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {GameService} from './game.service';
 import {HttpClientModule} from "@angular/common/http";
@@ -10,7 +10,6 @@ import { MaterialModule } from './material/material.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GameInputFormComponent } from './game-input-form/game-input-form.component';
 
 
 @NgModule({
@@ -18,7 +17,7 @@ import { GameInputFormComponent } from './game-input-form/game-input-form.compon
         AppComponent,
         SideNavComponent,
         GameSearchComponent,
-        GameInputFormComponent,
+        routingComponents
     ],
     imports: [
         HttpClientModule,

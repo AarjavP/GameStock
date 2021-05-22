@@ -50,6 +50,7 @@ class GameStockApi: CliktCommand() {
                 json(json = Json { serializersModule = IdKotlinXSerializationModule })
             }
             install(CORS) {
+                allowNonSimpleContentTypes = true
                 anyHost()
             }
             install(DataConversion) {
