@@ -1,1 +1,24 @@
-<p>games-view works!</p>
+<div class ="container">
+    <mat-card *ngFor="let game of games" class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{game.name}}</mat-card-title>
+            <mat-card-subtitle>{{game.category}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image
+            src={{game.media[0].url}}
+            alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                {{game.description}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-icon-button>
+                <mat-icon>thumb_up</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>share</mat-icon>
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -22,6 +22,27 @@
           </mat-form-field>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>Media</mat-label>
+            <mat-chip-list #chipList required>
+              <mat-chip *ngFor="let media of gameMediaList" [selectable]="selectable"
+                       [removable]="removable" (removed)="removeMedia(media)">
+                {{media.url}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="New Media..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="addMedia($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-12">
             <mat-radio-group #maturityRating = "ngModel" class="margin-left" name="maturityRating" [(ngModel)]="gameModel.maturityRating" required>
@@ -85,7 +106,7 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button [disabled]="userForm.form.invalid || maturityRating.untouched" mat-raised-button color="primary" (click) = "createGame()">Save</button>
+      <button [disabled]="userForm.form.invalid || maturityRating.untouched || gameMediaList.length == 0" mat-raised-button color="primary" (click) = "createGame()">Save</button>
     </mat-card-actions>
   </mat-card>
 </form>
