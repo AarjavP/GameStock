@@ -7,23 +7,14 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.versionOption
 import com.github.ajalt.clikt.parameters.types.int
 import com.mongodb.ConnectionString
-import io.ktor.application.*
-import io.ktor.features.*
-import io.ktor.locations.*
-import io.ktor.response.*
 import io.ktor.routing.*
-import io.ktor.serialization.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import kotlinx.serialization.json.Json
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.litote.kmongo.coroutine.coroutine
-import org.litote.kmongo.id.serialization.IdKotlinXSerializationModule
 import org.litote.kmongo.reactivestreams.KMongo
 import java.util.*
 
-class GameStockApi: CliktCommand() {
+class GameStockCli: CliktCommand() {
     init {
         versionOption("1.0.0-SNAPSHOT")
     }
@@ -36,41 +27,24 @@ class GameStockApi: CliktCommand() {
         help = "port number to listen on for api requests",
         envvar = "APP_PORT"
     ).int().default(8080)
-    
-    
+
+
     val mongoHost: String by option("--mongo-host", help = "hostname for mongodb", envvar = "MONGO_HOST").default("localhost")
-    val mongoPort: Int by option("--mongo-port", help = "hostname for mongodb", envvar = "MONGO_PORT" ).int().default(27017)
-    val mongoDatabase: String by option("--mongo-database", help = "hostname for mongodb", envvar = "MONGO_DATABASE").default("default")
+    val mongoPort: Int by option("--mongo-port", help = "port for mongodb", envvar = "MONGO_PORT" ).int().default(27017)
+    val mongoDatabase: String by option("--mongo-database", help = "database name", envvar = "MONGO_DATABASE").default("gamestock")
 
     val log: Logger = LogManager.getLogger("main")
 
     override fun run() {
-        val server = embeddedServer(Netty, port) {
-            install(ContentNegotiation) {
-                json(json = Json { serializersModule = IdKotlinXSerializationModule })
-            }
-            install(CORS) {
-                allowNonSimpleContentTypes = true
-                anyHost()
-            }
-            install(DataConversion) {
-                objectId()
-            }
-            install(Locations)
-        }
-
         val mongo = KMongo.createClient(ConnectionString("mongodb://$mongoHost:$mongoPort/$mongoDatabase")).coroutine
         val db = mongo.getDatabase(mongoDatabase)
-
-        val gameApi = GameApi(db)
+        val app = GameStockApp()
+        val server = app.createServer(port)
 
         try {
-            server.start()
+            server.start(wait = false)
             server.application.routing {
-                get("/") {
-                    call.respondText { "Hello World!" }
-                }
-                gameApi.apply { crud() }
+                app.registerRoutes(db, inRouting = this)
             }
 
 
@@ -87,7 +61,9 @@ class GameStockApi: CliktCommand() {
     }
 }
 
-fun main(args: Array<String>) = GameStockApi().main(args)
+fun main(args: Array<String>) {
+    GameStockCli().main(args)
+}
 
 fun dontReturnUtilShutdown() {
     val stick = java.lang.Object()
@@ -108,4 +84,3 @@ fun dontReturnUntilQuitInput() {
         if (line.equals("quit", ignoreCase = true)) break
     }
 }
-

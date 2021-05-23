@@ -2,12 +2,16 @@ plugins {
     id 'application'
     id 'org.jetbrains.kotlin.jvm'
     id 'dev.zacsweers.kgp-150-leak-patcher'
-    id 'org.jetbrains.kotlin.plugin.serialization'
+//    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 group rootProject.group
 version rootProject.version
 application.mainClass = 'net.cabii.game.api.GameStockApiKt'
+
+application {
+    mainClass = 'net.cabii.game.api.MainKt'
+}
 
 repositories {
     mavenCentral()
@@ -16,7 +20,7 @@ repositories {
 dependencies {
     api 'org.jetbrains.kotlin:kotlin-stdlib'
 
-    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
+//    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0'
 
     api parent
 
@@ -26,7 +30,8 @@ dependencies {
     api group: 'io.ktor', name: 'ktor-server-core', version: ktorVersion
     api group: 'io.ktor', name: 'ktor-server-netty', version: ktorVersion
     api group: 'io.ktor', name: 'ktor-locations', version: ktorVersion
-    api group: 'io.ktor', name: 'ktor-serialization', version: ktorVersion
+    api group: 'io.ktor', name: 'ktor-jackson', version: ktorVersion
+    testImplementation group: 'io.ktor', name: 'ktor-server-test-host', version: ktorVersion
 
 
     def log4j2Version = '2.14.1'

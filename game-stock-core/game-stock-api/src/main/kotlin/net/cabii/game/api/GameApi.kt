@@ -7,7 +7,6 @@ import io.ktor.locations.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import kotlinx.serialization.Serializable
 import net.cabii.game.models.Game
 import org.bson.types.ObjectId
 import org.litote.kmongo.coroutine.CoroutineDatabase
@@ -15,7 +14,6 @@ import org.litote.kmongo.coroutine.CoroutineDatabase
 class GameApi(db: CoroutineDatabase) {
     val collection = db.getCollection<Game>("games")
 
-    @Serializable
     data class GamesResult(val total: Long, val results: List<Game>)
 
     @Location("{gameId}")
@@ -24,7 +22,7 @@ class GameApi(db: CoroutineDatabase) {
     fun Routing.crud() {
         route("/games") {
             get {
-                val page = call.request.headers["page"]?.toIntOrNull() ?: 1
+                val page = call.request.queryParameters["page"]?.toIntOrNull() ?: 1
                 val pageSize = call.request.queryParameters["pageSize"]?.toIntOrNull() ?: 10
                 val skip = if (page < 1) { 1 } else { (page - 1) * pageSize }
                 val limit = pageSize
@@ -43,8 +41,8 @@ class GameApi(db: CoroutineDatabase) {
             }
             post {
                 val newGame = call.receive<Game>()
-                val result = collection.insertOne(newGame)
-                call.respond(newGame._id)
+                collection.insertOne(newGame)
+                call.respond(newGame.id)
             }
             delete<GameId> { gameId ->
                 val query = Filters.eq(gameId.gameId)
