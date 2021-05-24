@@ -19,7 +19,7 @@ dependencies {
 
     def kmongoVersion = '4.2.7'
     api group: 'org.litote.kmongo', name: 'kmongo-coroutine', version: kmongoVersion, {
-        exclude module: 'kmongo-jackson-mapping'
+//        exclude module: 'kmongo-jackson-mapping'
     }
 //    api 'org.litote.kmongo:kmongo-id-serialization:4.2.7'
 //    api group: 'org.litote.kmongo', name: 'kmongo-jackson', version: kmongoVersion

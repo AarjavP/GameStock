@@ -31,7 +31,7 @@ class GameStockCli: CliktCommand() {
 
     val mongoHost: String by option("--mongo-host", help = "hostname for mongodb", envvar = "MONGO_HOST").default("localhost")
     val mongoPort: Int by option("--mongo-port", help = "port for mongodb", envvar = "MONGO_PORT" ).int().default(27017)
-    val mongoDatabase: String by option("--mongo-database", help = "database name", envvar = "MONGO_DATABASE").default("gamestock")
+    val mongoDatabase: String by option("--mongo-database", help = "database name", envvar = "MONGO_DATABASE").default("default")
 
     val log: Logger = LogManager.getLogger("main")
 
