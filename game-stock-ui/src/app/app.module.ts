@@ -11,6 +11,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         SideNavComponent,
         GameSearchComponent,
         routingComponents,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        GameDetailComponent
     ],
     imports: [
         HttpClientModule,
