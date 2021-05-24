@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { GameSearchComponent } from './game-search/game-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         AppComponent,
         SideNavComponent,
         GameSearchComponent,
-        routingComponents
+        routingComponents,
+        PageNotFoundComponent
     ],
     imports: [
         HttpClientModule,
