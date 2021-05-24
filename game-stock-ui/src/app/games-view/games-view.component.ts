@@ -12,6 +12,7 @@ export class GamesViewComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.getGames();
   }
 
   games:Game[] = [
