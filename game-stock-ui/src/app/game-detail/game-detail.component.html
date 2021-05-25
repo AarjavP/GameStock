@@ -1,1 +1,55 @@
-<p>game-detail works!</p>
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content class="container">
+    <div class="row-container">
+        <mat-form-field class="full-width">
+            <mat-label>Category</mat-label>
+            <input matInput disabled
+                value="{{data.category}}" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Players</mat-label>
+            <input matInput disabled
+                value="{{getPlayerAgeString(data.suggestedNumberOfPlayers.minPlayers,data.suggestedNumberOfPlayers.maxPlayers)}}" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Age</mat-label>
+            <input matInput disabled
+                value="{{getPlayerAgeString(data.ageGroup.minAge,data.ageGroup.maxAge)}}" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Maturity Rating</mat-label>
+            <input matInput disabled
+                value="{{data.maturityRating}}" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Complexity Rating</mat-label>
+            <input matInput disabled
+                value="{{data.complexityRating}}" />
+        </mat-form-field>
+    </div>
+
+
+    <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput disabled value="{{data.description}}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput cdkTextareaAutosize disabled value="{{data.howToPlay}}"></textarea>
+    </mat-form-field>
+
+
+
+
+
+
+
+</div>
+<div mat-dialog-actions>
+
+</div>

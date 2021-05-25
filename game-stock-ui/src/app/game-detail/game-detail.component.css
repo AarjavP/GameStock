@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 900px;
+    height: 700px
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-body {
+    margin: 20px;
+    border-color: lightblue;
+    border-style: solid;
+
+}
+
+input:disabled {
+    color: black;
+  }
+
+  textarea:disabled {
+    color: black;
+  }
+  
+  select:disabled {
+    color: black;
+  }
+  
+
+  .mat-select-disabled .mat-select-value {
+    color: black;
+  }
+
+   
+.full-width{
+  width: 100%;
+}

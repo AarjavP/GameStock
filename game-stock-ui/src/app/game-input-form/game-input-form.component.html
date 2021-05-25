@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-sm-6">
           <mat-form-field class="full-width">
-            <textarea matInput required placeholder="Description" name="description"
+            <textarea cdkTextareaAutosize matInput required placeholder="Description" name="description"
               [(ngModel)]="gameModel.description"></textarea>
           </mat-form-field>
         </div>
@@ -97,12 +97,26 @@
           <mat-form-field>
             <input matInput type="number" placeholder="Max Players" name="maxPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.maxPlayers"/>
           </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field>
+            <input matInput required type="number"  #minPlayers = "ngModel" min = "1" placeholder="Min Age" name="minAge" [(ngModel)]="gameModel.ageGroup.minAge" />
+          </mat-form-field>
           <span></span>
+          <mat-form-field>
+            <input matInput type="number" placeholder="Max Age" name="maxAge" [(ngModel)]="gameModel.ageGroup.maxAge"/>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <mat-form-field>
             <input matInput required type="number" placeholder="Complexity Rating" name="complexityRating" [(ngModel)]="gameModel.complexityRating"/>
           </mat-form-field>
         </div>
-      </div>
+      </div>         
 
     </mat-card-content>
     <mat-card-actions>

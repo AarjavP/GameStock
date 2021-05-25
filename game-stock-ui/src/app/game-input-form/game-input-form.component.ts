@@ -20,7 +20,7 @@ export class GameInputFormComponent implements OnInit {
 
   constructor(private gameService: GameService) {
     this.gameMediaList = []
-    this.gameModel = new Game('', '', [], '', new PlayerCount(undefined, undefined), MaturityRating.EVERYONE, new AgeGroup(0,), 0, [], [], this.gameMediaList, '', []);
+    this.gameModel = new Game('', '', [], '', new PlayerCount(undefined, undefined), MaturityRating.EVERYONE, new AgeGroup(undefined,), 0, [], [], this.gameMediaList, '', []);
   }
 
 
@@ -42,7 +42,7 @@ export class GameInputFormComponent implements OnInit {
       );
     }
 
-    event.input.value = ''
+    event.chipInput!.clear()
   }
 
   removeMedia(media: GameMedia): void {
