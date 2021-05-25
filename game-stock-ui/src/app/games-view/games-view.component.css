@@ -1,5 +1,8 @@
 .example-card {
     max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
 .container {
@@ -11,3 +14,4 @@
 mat-card {
     margin: 10px;
 }
+

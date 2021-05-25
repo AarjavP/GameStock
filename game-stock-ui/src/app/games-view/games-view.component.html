@@ -1,16 +1,17 @@
-<div class ="container">
+<div class="container">
     <mat-card (click)="openGameDetailDialog(game)" *ngFor="let game of games" class="example-card">
         <mat-card-header>
             <mat-card-title>{{game.name}}</mat-card-title>
             <mat-card-subtitle>{{game.category}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image
-            src={{game.media[0].url}}
-            alt="Photo of a Shiba Inu">
+
+        <img mat-card-image src={{game.media[0].url}} alt="Photo of a Shiba Inu">
+
+
         <mat-card-content>
-            <p>
+            <!-- <p>
                 {{game.description}}
-            </p>
+            </p> -->
         </mat-card-content>
         <mat-card-actions align="end">
             <button mat-icon-button>
