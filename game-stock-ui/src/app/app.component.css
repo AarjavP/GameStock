@@ -1,26 +1,22 @@
-.toolbar{
-  justify-content: space-between
-}
-
-.container {
-  display: flex; /* or inline-flex */
-  align-items: center;
-
-}
-
-span {
-  padding-right: 1rem;
-}
 
 mat-sidenav-container {
   height: 100%;
 }
 
-mat-sidenav, mat-sidenav-content {
-  padding: 16px;
-}
-
 mat-sidenav{
   background-color:lightsteelblue;
   width: 250px;
+}
+
+button:hover, button:active {
+  color: lightgrey
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover, a:active {
+  color: lightgrey
 }

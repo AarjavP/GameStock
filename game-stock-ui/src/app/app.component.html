@@ -1,15 +1,14 @@
-<mat-toolbar class="toolbar" color="primary">
-  <div class="container">
+<mat-toolbar color="primary" fxLayout fxLayoutAlign="space-between center" >
+  <div fxLayout fxLayoutAlign="center center">
     <button mat-icon-button (click)="menuButtonOpened = !menuButtonOpened">
       <mat-icon>menu</mat-icon>
     </button>
-    <span class="example-spacer"></span>
-    <span>Game Stock</span>
+    <div><a routerLink = "/games">Game Stock</a></div>
   </div>
 
   <app-game-search></app-game-search>
 
-  <div class="container">
+  <div>
     <button mat-icon-button routerLink="/game-input-form">
       <mat-icon>manage_accounts</mat-icon>
     </button>

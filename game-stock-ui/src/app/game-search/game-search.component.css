@@ -11,3 +11,11 @@ div {
 .search-input {
     width: 400px;
 }
+
+button:hover, button:active {
+    color: lightgrey
+}
+
+mat-select:hover, mat-select:active {
+    color: lightgrey
+}

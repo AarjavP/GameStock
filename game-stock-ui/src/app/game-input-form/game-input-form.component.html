@@ -1,126 +1,112 @@
-<form #userForm="ngForm" class="form-container">
-  <!-- {{userForm.value | json}}
+<section>
+  <form #userForm="ngForm" (ngSubmit)="createGame()">
+    <!-- {{userForm.value | json}}
   {{gameModel | json}} -->
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Game Information</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field class="full-width">
-            <input matInput required #name = "ngModel" placeholder="Name" name="name" [(ngModel)]="gameModel.name" />
-          </mat-form-field>
-        </div>
-      </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Game Information</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
 
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field class="full-width">
-            <textarea cdkTextareaAutosize matInput required placeholder="Description" name="description"
-              [(ngModel)]="gameModel.description"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
+        <mat-form-field>
+          <input matInput required #name="ngModel" placeholder="Name" name="name" [(ngModel)]="gameModel.name" />
+        </mat-form-field>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field class="full-width">
-            <mat-label>Media</mat-label>
-            <mat-chip-list #chipList required>
-              <mat-chip *ngFor="let media of gameMediaList" [selectable]="selectable"
-                       [removable]="removable" (removed)="removeMedia(media)">
-                {{media.url}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="New Media..."
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="addMedia($event)">
-            </mat-chip-list>
-          </mat-form-field>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12">
-            <mat-radio-group #maturityRating = "ngModel" class="margin-left" name="maturityRating" [(ngModel)]="gameModel.maturityRating" required>
-              <mat-radio-button value="EARLY_CHILDHOOD">Early Childhood</mat-radio-button>
-              <mat-radio-button value="EVERYONE">Everyone</mat-radio-button>
-              <mat-radio-button value="EVERYONE_10">Everyone 10+</mat-radio-button>
-              <mat-radio-button value="TEEN">Teen</mat-radio-button>
-              <mat-radio-button value="MATURE">Mature</mat-radio-button>
-              <mat-radio-button value="RATING_PENDING">Rating Pending</mat-radio-button>
-              <mat-radio-button value="ADULT_ONLY">Adults Only</mat-radio-button>
-            </mat-radio-group>
-            
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field class="full-width">
-            <textarea matInput required placeholder="How To Play" name="howToPlay" [(ngModel)]="gameModel.howToPlay"></textarea>
-          </mat-form-field>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field class="full-width">
-            <mat-label>Category</mat-label>
-            <mat-select required name="category" [(ngModel)]="gameModel.category">
-              <mat-option value="indoor">Indoor</mat-option>
-              <mat-option value="outdoor">Outdoor</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
+        <mat-form-field>
+          <textarea cdkTextareaAutosize matInput required placeholder="Description" name="description"
+            [(ngModel)]="gameModel.description"></textarea>
+        </mat-form-field>
 
-      <div class="row">
-        <div class="col-sm-6">
-          <mat-form-field class="full-width">
-            <mat-label>Tags</mat-label>
-            <mat-select required multiple name="tags" [(ngModel)]="gameModel.tags">
-              <mat-option value="mystery">Mystery</mat-option>
-              <mat-option value="horror">Horror</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field>
-            <input matInput required type="number"  #minPlayers = "ngModel" min = "1" placeholder="Min Players" name="minPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.minPlayers" />
-          </mat-form-field>
-          <span></span>
-          <mat-form-field>
-            <input matInput type="number" placeholder="Max Players" name="maxPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.maxPlayers"/>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field>
-            <input matInput required type="number"  #minPlayers = "ngModel" min = "1" placeholder="Min Age" name="minAge" [(ngModel)]="gameModel.ageGroup.minAge" />
-          </mat-form-field>
-          <span></span>
-          <mat-form-field>
-            <input matInput type="number" placeholder="Max Age" name="maxAge" [(ngModel)]="gameModel.ageGroup.maxAge"/>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <mat-form-field>
-            <input matInput required type="number" placeholder="Complexity Rating" name="complexityRating" [(ngModel)]="gameModel.complexityRating"/>
-          </mat-form-field>
-        </div>
-      </div>         
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button [disabled]="userForm.form.invalid || maturityRating.untouched || gameMediaList.length == 0" mat-raised-button color="primary" (click) = "createGame()">Save</button>
-    </mat-card-actions>
-  </mat-card>
-</form>
+        <mat-form-field>
+          <mat-label>Media</mat-label>
+          <mat-chip-list #chipList required>
+            <mat-chip *ngFor="let media of gameMediaList" [selectable]="selectable" [removable]="removable"
+              (removed)="removeMedia(media)">
+              {{media.url}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="New Media..." [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="addMedia($event)">
+          </mat-chip-list>
+          <mat-hint>Provide URL for the picture</mat-hint>
+        </mat-form-field>
+
+
+
+        <mat-radio-group #maturityRating="ngModel" class="margin-left" name="maturityRating"
+          [(ngModel)]="gameModel.maturityRating" required>
+          <mat-radio-button value="EARLY_CHILDHOOD">Early Childhood</mat-radio-button>
+          <mat-radio-button value="EVERYONE">Everyone</mat-radio-button>
+          <mat-radio-button value="EVERYONE_10">Everyone 10+</mat-radio-button>
+          <mat-radio-button value="TEEN">Teen</mat-radio-button>
+          <mat-radio-button value="MATURE">Mature</mat-radio-button>
+          <mat-radio-button value="RATING_PENDING">Rating Pending</mat-radio-button>
+          <mat-radio-button value="ADULT_ONLY">Adults Only</mat-radio-button>
+        </mat-radio-group>
+
+
+
+        <mat-form-field>
+          <textarea matInput required placeholder="How To Play" name="howToPlay"
+            [(ngModel)]="gameModel.howToPlay"></textarea>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>Category</mat-label>
+          <mat-select required name="category" [(ngModel)]="gameModel.category">
+            <mat-option value="indoor">Indoor</mat-option>
+            <mat-option value="outdoor">Outdoor</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>Tags</mat-label>
+          <mat-select required multiple name="tags" [(ngModel)]="gameModel.tags">
+            <mat-option value="mystery">Mystery</mat-option>
+            <mat-option value="horror">Horror</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput required type="number" #minPlayers="ngModel" min="1" placeholder="Min Players"
+            name="minPlayers" [(ngModel)]="gameModel.suggestedNumberOfPlayers.minPlayers" />
+        </mat-form-field>
+        <span></span>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Max Players" name="maxPlayers"
+            [(ngModel)]="gameModel.suggestedNumberOfPlayers.maxPlayers" />
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput required type="number" #minPlayers="ngModel" min="1" placeholder="Min Age" name="minAge"
+            [(ngModel)]="gameModel.ageGroup.minAge" />
+        </mat-form-field>
+        <span></span>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Max Age" name="maxAge" [(ngModel)]="gameModel.ageGroup.maxAge" />
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput required type="number" placeholder="Complexity Rating" name="complexityRating"
+            [(ngModel)]="gameModel.complexityRating" />
+        </mat-form-field>
+
+
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+        <button type = "submit" [disabled]="userForm.form.invalid || maturityRating.untouched || gameMediaList.length == 0"
+          mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</section>
