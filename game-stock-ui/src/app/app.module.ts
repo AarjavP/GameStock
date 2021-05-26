@@ -12,6 +12,7 @@ import { GameSearchComponent } from './game-search/game-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
         ReactiveFormsModule,        
         AppRoutingModule,
         MaterialModule,
+        FlexLayoutModule,
         BrowserAnimationsModule
 
     ],
